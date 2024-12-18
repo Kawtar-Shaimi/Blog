@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - KSBlog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+   
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+           
+            <div class="text-2xl font-bold flex space-x-2">
+                <a href="#">KSBlog</a>
+                <img class="w-10 h-8" src="../../images/noodles.png" alt="logo">
+            </div>
+
+            
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="afficherArticle.html" class="hover:text-gray-300">Articles</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Categories</a></li>
+                    <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+                    <li><a href="#" class="hover:text-gray-300">About Us</a></li>
+                </ul>
+            </nav>
+
+            
+            <div class="space-x-4">
+                <a href="../Auth/login.html" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">Login</a>
+                <a href="../Auth/signup.php" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 text-white py-2 px-4 rounded-lg transition duration-300">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    
+    <section class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Les plus connus</h1>
+
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                <img src="../../images/articles/Takoyaki 🐙.jpg" alt="Image Article 1" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">Takoyaki</h2>
+                    <p class="text-gray-700 mb-4">Takoyaki is a popular Japanese street food consisting of savory octopus-filled dough balls, typically served with takoyaki sauce, bonito flakes, and aonori (seaweed flakes). Below is a simple recipe to make takoyaki at home...</p>
+                    <a href="#" class="text-blue-500 hover:underline font-semibold">Lire la suite</a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                <img src="../../images/articles/Easy One-Pot Spicy Miso Ramen (Vegan).jpg" alt="Image Article 2" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">Miso Ramen</h2>
+                    <p class="text-gray-700 mb-4">Miso Ramen is a comforting Japanese noodle soup flavored with miso paste, usually served with ramen noodles, vegetables, and proteins like pork or chicken. Here's a simple and delicious recipe to make Miso Ramen at home....</p>
+                    <a href="#" class="text-blue-500 hover:underline font-semibold">Lire la suite</a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+                <img src="../../images/articles/ai sushi.jpg" alt="Image Article 3" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h2 class="text-2xl font-semibold text-blue-600 mb-4">sushi sashimi</h2>
+                    <p class="text-gray-700 mb-4">Sashimi is a traditional Japanese dish that consists of thinly sliced raw fish, often served with soy sauce, wasabi, and pickled ginger. Unlike sushi, sashimi is served without rice. Here's how to prepare fresh and delicious sashimi at home....</p>
+                    <a href="#" class="text-blue-500 hover:underline font-semibold">Lire la suite</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 KSBlog. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
