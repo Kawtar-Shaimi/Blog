@@ -1,9 +1,9 @@
 <?php
     session_start();
     require "../../DB/database.php";
-    $_SESSION["emailErr"] ?? null;
-    $_SESSION["passErr"] ?? null;
-    $_SESSION["loginErr"] ?? null;
+    $emailErr = $_SESSION["emailErr"] ?? null;
+    $passErr = $_SESSION["passErr"] ?? null;
+    $loginErr = $_SESSION["loginErr"] ?? null;
     unset($_SESSION["emailErr"],$_SESSION["passErr"],$_SESSION["loginErr"]);
 ?>
 <!DOCTYPE html>
@@ -24,14 +24,14 @@
             
             <div class="text-2xl font-bold flex space-x-2">
                 <a href="#">SukiBlog</a>
-                <img class="w-10 h-8" src="../images/noodles.png" alt="logo">
+                <img class="w-10 h-8" src="../../images/noodles.png" alt="logo">
             </div>
 
             
             <nav>
                 <ul class="flex space-x-6">
-                    <li><a href="../Articles/afficherArticles.html" class="hover:text-gray-300">Articles</a></li>
-                    <li><a href="#" class="hover:text-gray-300">Categories</a></li>
+                <li><a href="../../index.html" class="hover:text-gray-300">Home</a></li>
+                <li><a href="../Articles/afficherArticles.php" class="hover:text-gray-300">Articles</a></li>
                     <li><a href="#" class="hover:text-gray-300">Contact</a></li>
                     <li><a href="#" class="hover:text-gray-300">About Us</a></li>
                 </ul>
@@ -39,7 +39,7 @@
 
             
             <div class="space-x-4">
-                <a href="login.html" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">Login</a>
+                <a href="login.php" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">Login</a>
                 <a href="signup.php" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 text-white py-2 px-4 rounded-lg transition duration-300">Sign Up</a>
             </div>
         </div>
@@ -52,7 +52,7 @@
         <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-sm transform transition-all duration-300 hover:scale-105">
             <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Se connecter</h2>
             
-            <form action="#" method="POST">
+            <form action="../../Controllers/login.php" method="POST">
                 
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium text-gray-600">Email</label>

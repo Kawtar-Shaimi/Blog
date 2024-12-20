@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if (empty($pass) || strlen($pass < 8)) {
+    if (empty($pass) || strlen($pass) < 8) {
         $_SESSION["passErr"] = "Password is required and must be strong.";
         $isValid = false;
     }

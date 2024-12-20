@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare($sql);
 
             if (!$stmt){
+                echo "Database error: " . $conn->error;
                 throw new Exception("Database error: " . $conn->error);
             }
 
@@ -38,19 +39,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->close();
                     $conn->close();
                     if ($user["role"] === "user") {
-                        header("Location: ../pages/Articles/afficherArticles.html");
+                        header("Location: ../pages/Articles/afficherArticles.php");
                     } else {
                         header("Location: ../pages/Admin/backOffice.html");
                     }
                     exit;
                 }else{
                     $_SESSION["loginErr"] = "Email or Password is incorrect!";
+                    $conn->close();
+                    header("Location: ../pages/Auth/login.php");
+                    exit;
                 }
             }else{
                 $_SESSION["loginErr"] = "Email or Password is incorrect!";
+                $conn->close();
+                header("Location: ../pages/Auth/login.php");
+                exit;
             }
             $stmt->close();
         } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
             throw new Exception("Error: " . $e->getMessage());
         }
     }else{

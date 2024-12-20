@@ -34,16 +34,16 @@
            
             <nav>
                 <ul class="flex space-x-6">
-                    <li><a href="../Articles/afficherArticles.html" class="hover:text-gray-300">Articles</a></li>
-                    <li><a href="#" class="hover:text-gray-300">Categories</a></li>
+                    <li><a href="../../index.html" class="hover:text-gray-300">Home</a></li>
+                    <li><a href="../Articles/afficherArticles.php" class="hover:text-gray-300">Articles</a></li>
                     <li><a href="#" class="hover:text-gray-300">Contact</a></li>
-                    <li><a href="#" class="hover:text-gray-300">About Us</a></li>
+                    <li><a href="../../about.html" class="hover:text-gray-300">About Us</a></li>
                 </ul>
             </nav>
 
             
             <div class="space-x-4">
-                <a href="login.html" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 text-white py-2 px-4 rounded-lg transition duration-300">Login</a>
+                <a href="login.php" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 text-white py-2 px-4 rounded-lg transition duration-300">Login</a>
                 <a href="signup.php" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">Sign Up</a>
             </div>
         </div>
