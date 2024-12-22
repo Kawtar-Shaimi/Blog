@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['welcome_message'] = "Welcome To The Familly.";
             $stmt->close();
             $conn->close();
-            header("Location: ../pages/Articles/afficherArticles.html");
+            header("Location: ../pages/Articles/afficherArticles.php");
             exit;
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());

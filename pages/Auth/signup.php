@@ -93,7 +93,7 @@
             </form>
 
             <div class="text-center mt-4">
-                <a href="login.html" class="text-sm text-blue-500 hover:underline transition duration-300 ease-in-out transform hover:scale-105">Déjà un compte ? Connectez-vous</a>
+                <a href="login.php" class="text-sm text-blue-500 hover:underline transition duration-300 ease-in-out transform hover:scale-105">Déjà un compte ? Connectez-vous</a>
             </div>
         </div>
 

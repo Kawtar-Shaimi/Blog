@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    require "../../DB/database.php";
+
+    $sql= "SELECT * From articles";
+    $result = $conn->query($sql);
+
+  
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,10 +26,9 @@
         <div class="sidebar w-64 bg-blue-600 text-white p-6">
             <h2 class="text-2xl font-semibold mb-6">Admin Dashboard</h2>
             <ul>
-                <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Tableau de bord</a></li>
+                <li><a href="backOffice.html" class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Tableau de bord</a></li>
                 <li><a href="afficherUsers.php" class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Utilisateurs</a></li>
                 <li><a href="afficherArticles.php" class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Articles</a></li>
-                <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Paramètres</a></li>
                 <li><a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded-lg">Déconnexion</a></li>
             </ul>
         </div>
@@ -69,36 +78,44 @@
             </div>
 
             <div class="mt-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Derniers Articles</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Liste des articles</h2>
             
                 <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
                     <thead>
                         <tr>
-                            <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Titre</th>
-                            <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Auteur</th>
-                            <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Date</th>
+                            <th class="py-3 px-4 text-left text-sm font-medium text-gray-600">Id article</th>
+                            <th class="py-3 px-7 text-left text-sm font-medium text-gray-600">Titre</th>
+                            <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Content</th>
+                            <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Image</th>
+                            <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Id user</th>
                             <th class="py-3 px-6 text-left text-sm font-medium text-gray-600">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b">
-                            <td class="py-3 px-6 text-sm text-gray-800">Article 1</td>
-                            <td class="py-3 px-6 text-sm text-gray-800">Admin</td>
-                            <td class="py-3 px-6 text-sm text-gray-800">2024-12-15</td>
-                            <td class="py-3 px-6 text-sm text-gray-800">
-                                <button class="text-blue-500 hover:text-blue-700">Modifier</button>
-                                <button class="text-red-500 hover:text-red-700 ml-2">Supprimer</button>
-                            </td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-3 px-6 text-sm text-gray-800">Article 2</td>
-                            <td class="py-3 px-6 text-sm text-gray-800">Admin</td>
-                            <td class="py-3 px-6 text-sm text-gray-800">2024-12-10</td>
-                            <td class="py-3 px-6 text-sm text-gray-800">
-                                <button class="text-blue-500 hover:text-blue-700">Modifier</button>
-                                <button class="text-red-500 hover:text-red-700 ml-2">Supprimer</button>
-                            </td>
-                        </tr>
+                        <?php
+                            if ($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<tr class='border-b'>";
+                                    echo "<td class='py-3 px-4 text-sm text-gray-800'> {$row['id_article']} </td>";
+                                    echo "<td class='py-3 px-7 text-sm text-gray-800'> {$row['titre']} </td>";
+                                    echo "<td class='py-3 px-6 text-sm text-gray-800'> {$row['content']}</td>";
+                                    echo "<td class='py-3 px-6 text-sm text-gray-800'>{$row['img']}</td>";
+                                    echo "<td class='py-3 px-6 text-sm text-gray-800'>{$row['id_user']}</td>";
+                                    echo "<td class='flex gap-2 px-2 py-2'>
+                                            <a class='text-blue-500 hover:text-blue-700' href='../../Controllers/Users/updateUser.php?id= {$row['id_article']} '>
+                                                Modifier
+                                            </a>
+                                            <a class='text-red-500 hover:text-red-700 ml-2' href='../../Controllers/Users/deleteUser.php?id= {$row['id_article']} '>
+                                                Supprimer
+                                            </a>
+                                        </td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                echo "<tr><td colspan='5' class='text-center py-2'>No clients found</td></tr>";
+                            }
+                            $conn->close();
+                        ?>
                     </tbody>
                 </table>
             </div>
