@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,30 +13,8 @@
     <!-- Hero Section -->
     <header class="bg-cover bg-center h-screen">
         
-        <header class="bg-blue-600 text-white p-4">
-            <div class="container mx-auto flex justify-between items-center">
-               
-                <div class="text-2xl font-bold flex space-x-2">
-                    <a href="#">SukiBlog</a>
-                    <img class="w-10 h-8" src="./images/noodles.png" alt="logo">
-                </div>
-    
-                <nav>
-                    <ul class="flex space-x-6">
-                        <li><a href="" class="hover:text-gray-300">Home</a></li>
-                        <li><a href="./pages/Articles/afficherArticles.php" class="hover:text-gray-300">Articles</a></li>
-                        <li><a href="#" class="hover:text-gray-300">Contact</a></li>
-                        <li><a href="about.html" class="hover:text-gray-300">About Us</a></li>
-                    </ul>
-                </nav>
-    
-                
-                <div class="space-x-4">
-                    <a href="./pages/Auth/login.php" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 text-white py-2 px-4 rounded-lg transition duration-300">Login</a>
-                    <a href="./pages/Auth/signup.php" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">Sign Up</a>
-                </div>
-            </div>
-        </header>
+        <?php include_once "./layouts/header.php";?>
+
         <div class="h-full flex items-center justify-center text-center text-white relative">
             <video class="absolute z-10 w-full h-full object-cover" autoplay loop muted>
                 <source src="./images/Aesthetic.webm" type="video/webm">
@@ -51,7 +32,7 @@
    
 
     
-    <section id="recipes" class="py-16 bg-gray-100">
+    <section id="recipes" class="my-20 py-20 bg-gray-100">
         <div class="container mx-auto">
             <h2 class="text-4xl font-bold text-gray-800 text-center mb-8">Popular Recipes</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -91,7 +72,7 @@
     <!-- Footer -->
     <footer class="bg-blue-700 text-white py-6">
         <div class="container mx-auto text-center">
-            <p>&copy; 2024 Japanese Recipes Blog. All rights reserved.</p>
+            <p>&copy; 2024 Japanese Recipes Blog. All rights reserved to Kawtar SHAIMI.</p>
         </div>
     </footer>
 </body>

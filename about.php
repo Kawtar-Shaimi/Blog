@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,31 +11,7 @@
 </head>
 <body class="bg-blue-50">
     <!-- Header -->
-    <header class="bg-blue-600 text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <div class="text-2xl font-bold flex space-x-2">
-                <a href="#">SukiBlog</a>
-                <img class="w-10 h-8" src="./images/noodles.png" alt="logo">
-            </div>
-
-            <!-- Navigation -->
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="./index.html" class="hover:text-gray-300">Home</a></li>
-                    <li><a href="./pages/Articles/afficherArticles.php" class="hover:text-gray-300">Articles</a></li>
-                    <li><a href="#" class="hover:text-gray-300">Contact</a></li>
-                    <li><a href="about.html" class="hover:text-gray-300">About Us</a></li>
-                </ul>
-            </nav>
-
-            <!-- Buttons -->
-            <div class="space-x-4">
-                <a href="./pages/Auth/login.php" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 text-white py-2 px-4 rounded-lg transition duration-300">Login</a>
-                <a href="./pages/Auth/signup.php" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300">Sign Up</a>
-            </div>
-        </div>
-    </header>
+    <?php include_once "./layouts/header.php";?>
 
     <!-- About Section -->
     <section class="py-16 bg-white">

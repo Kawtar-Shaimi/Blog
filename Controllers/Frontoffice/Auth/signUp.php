@@ -1,8 +1,25 @@
 <?php
+
+if (isset($_COOKIE['user_id']) && isset($_COOKIE['user_role'])) {
+    if ($_COOKIE['user_role'] === "user") {
+        header("Location: ../../../index.php");
+    } else {
+        header("Location: ../../../pages/Admin/Articles/afficherArticles.php");
+    }
+}
+
 session_start();
-require "../DB/database.php";
+require "../../../DB/database.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (!isset($_SESSION['csrf_token']) || !isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        echo "Session expired or invalid request. Please refresh the page.";
+        exit();
+    }
+
+    unset($_SESSION['csrf_token']);
+
     $name = trim($_POST['nom']);
     $email = trim($_POST['email']);
     $pass = trim($_POST['password']);
@@ -14,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $isValid = false;
     }
 
-    if (empty($email) || strlen($email) > 100) {
+    if (empty($email) || strlen($email) > 100 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['emailErr'] = "Email is required and must be 100 characters or less.";
         $isValid = false;
     }else{
@@ -45,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($isValid) {
         try {
-            $hashPass = password_hash($password,PASSWORD_BCRYPT);
+            $hashPass = password_hash($pass,PASSWORD_BCRYPT);
 
             $sql = "INSERT INTO users (nom, email,password,role) VALUES (?, ?, ?,'user')";
             $stmt = $conn->prepare($sql);
@@ -57,17 +74,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("sss", $name, $email, $hashPass);
             $stmt->execute();
             $user_id = $stmt->insert_id;
-            setcookie("user_id", $user_id, time() + (30 * 24*3600),"/");
-            $_SESSION['welcome_message'] = "Welcome To The Familly.";
+            setcookie("user_id", $user_id, time() + 30 * 24 * 3600, "/","",true,true);
+            setcookie("user_role", "user", time() + 30 * 24 * 3600, "/","",true,true);
             $stmt->close();
             $conn->close();
-            header("Location: ../pages/Articles/afficherArticles.php");
+            header("Location: ../../../index.php");
             exit;
         } catch (Exception $e) {
             throw new Exception("Error: " . $e->getMessage());
         }
     }else{
-        header("Location: ../pages/Auth/signup.php");
+        header("Location: ../../../pages/Auth/signup.php");
         exit;
 }
 }
